@@ -72,11 +72,11 @@ public class PlayerJump : MonoBehaviour
     {
         if (!IsGrounded)
         {
-            PlayerRig.gravityScale += playerMass;
+            gravity += playerMass;
         }
         else
         {
-            PlayerRig.gravityScale = defaultGravity;
+            gravity = defaultGravity;
         }
     }
 
