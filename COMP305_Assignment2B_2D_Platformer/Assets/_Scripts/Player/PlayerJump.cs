@@ -11,6 +11,7 @@ public class PlayerJump : MonoBehaviour
     public float JumpVelocity;
     public bool IsGrounded = false;
     public float defaultGravity;
+    public GameObject rayTarget;
     //public float gravityScaleRate;
 
     [Header("Other")]
@@ -28,6 +29,7 @@ public class PlayerJump : MonoBehaviour
     void FixedUpdate()
     {
         Jump();
+        GroundCheck();
         
     }
 
@@ -35,12 +37,7 @@ public class PlayerJump : MonoBehaviour
     {
         KeyStatesCheck();
         AlterGravity();
-        if (transform.position.y > 0.0125364)
-        {
-            IsGrounded = false;
-        }
-      
-       
+         
     }
 
     public void KeyStatesCheck()
@@ -57,11 +54,32 @@ public class PlayerJump : MonoBehaviour
         
     }
 
+    public void GroundCheck()
+    {
+
+
+        //Debug.DrawRay(rayTarget.transform.position,Vector3.down*0.1f, Color.red);
+        RaycastHit hitRay;
+        //Debug.DrawRay(rayTarget.transform.position, hitRay.point, Color.red, 2f);
+
+        if (Physics.Raycast(rayTarget.transform.position, -Vector3.up, out hitRay))
+        {
+            if (hitRay.collider)
+            {
+                Debug.Log("Collided");
+                Debug.DrawRay(rayTarget.transform.position, -Vector3.up * hitRay.distance, Color.red, 2f);
+            }
+           
+           
+        }
+
+    }
+
     public void Jump()
     {
         if (SpaceDown&&IsGrounded)
         {
-            PlayerRig.AddForce(transform.up * JumpVelocity, ForceMode2D.Impulse);
+            PlayerRig.AddForce(Vector3.up * JumpVelocity, ForceMode2D.Impulse);
             IsGrounded = false;
             
         }
@@ -72,11 +90,11 @@ public class PlayerJump : MonoBehaviour
     {
         if (!IsGrounded)
         {
-            gravity += playerMass;
+            PlayerRig.gravityScale += 0.15f;
         }
         else
         {
-            gravity = defaultGravity;
+            PlayerRig.gravityScale = defaultGravity;
         }
     }
 
@@ -84,9 +102,19 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            IsGrounded = true;
-            gravity = defaultGravity;
+           IsGrounded = true;
+           gravity = defaultGravity;
         }
        
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            IsGrounded = false;
+            //gravity = defaultGravity;
+        }
+
     }
 }
