@@ -20,14 +20,24 @@ public class PlayerMovement : MonoBehaviour
     public float JumpVelocity;
     public bool IsGrounded;
     public float defaultGravity;
+    public float maxVelocity;
+
+    [Header("Audio Sources")]
     public AudioSource jumpSfx;
+    public AudioSource pickUpSfx;
+    public AudioSource hurtSfx;
+    public AudioSource lifeSfx;
+
+    [Header("UI Controller")]
+    public UiController uiController;
+
     //public Vector2 maximumVelocity = new Vector2(6.0f, 7.0f);
 
     [Header("Other")]
     private double gravity;
     private float playerMass;
     public bool SpaceDown;
-    public float maxVelocity;
+    public Transform SpawnPoint;
 
 
 
@@ -35,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gravity = this.playerRig.gravityScale;
         IsGrounded = false;
+        uiController.Lives = 5;
     }
 
 
@@ -54,13 +65,16 @@ public class PlayerMovement : MonoBehaviour
             anim.SetInteger("AnimationState", (int)PlayerAnimState.IDLE);
         }
 
+       
+
         IsGrounded = Physics2D.BoxCast(transform.position, new Vector2(0.75f,0.25f), 0.0f, Vector2.down, 1.0f, 1 << LayerMask.NameToLayer("Grounded"));
+        this.playerRig.velocity = new Vector2(playerRig.velocity.x, Mathf.Clamp(this.playerRig.velocity.y, -maxVelocity, maxVelocity));
 
 
         KeyStatesCheck();
         AlterGravity();
 
-        this.playerRig.velocity = new Vector2(Mathf.Clamp(this.playerRig.velocity.x, -MaxSpeed, MaxSpeed), playerRig.velocity.y);
+        //this.playerRig.velocity = new Vector2(Mathf.Clamp(this.playerRig.velocity.x, -MaxSpeed, MaxSpeed), playerRig.velocity.y);
     }
 
     void Movement()
@@ -87,16 +101,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //void VelocityConstraint()
-    //{
-
-    //    playerRig.velocity =
-    //        new Vector2(
-    //            Mathf.Clamp(playerRig.velocity.x,
-    //                -MaxSpeed, MaxSpeed),
-    //            Mathf.Clamp(playerRig.velocity.y,
-    //                -maxVelocity, maxVelocity));
-    //}
 
     public void KeyStatesCheck()
     {
@@ -118,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log(playerRig.velocity.y.ToString());
             anim.SetInteger("AnimationState", (int)PlayerAnimState.JUMP);
-            this.playerRig.velocity = new Vector2(playerRig.velocity.x, Mathf.Clamp(this.playerRig.velocity.y, -maxVelocity, maxVelocity));
+            
             playerRig.AddForce(Vector3.up * JumpVelocity, ForceMode2D.Impulse);
             jumpSfx.Play();
             IsGrounded = false;
@@ -137,5 +141,55 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRig.gravityScale = defaultGravity;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Collectible":
+                pickUpSfx.Play();
+                uiController.CherryScore += 1;
+                Destroy(collision.gameObject);
+                break;
+
+            case "Life":
+                lifeSfx.Play();
+                uiController.Lives += 1;
+                Destroy(collision.gameObject);
+                break;
+        }
+       
+    }
+
+  
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+
+            case "DeathGround":
+
+                if (uiController.Lives != 0)
+                {
+                    this.transform.position = SpawnPoint.transform.position;
+                    hurtSfx.Play();
+                    uiController.Lives -= 1;
+                }
+
+                break;
+
+            case "Enemy":
+                if (uiController.Lives != 0)
+                {
+                    hurtSfx.Play();
+                    anim.SetTrigger("IsHurt");
+
+                    uiController.Lives -= 1;
+                }
+                    break;
+        }
+       
     }
 }

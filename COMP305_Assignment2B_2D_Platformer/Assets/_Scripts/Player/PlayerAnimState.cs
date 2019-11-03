@@ -10,7 +10,8 @@ namespace Util
      
        IDLE,
        RUN,
-       JUMP
+       JUMP,
+       HURT
     }
 }
 
