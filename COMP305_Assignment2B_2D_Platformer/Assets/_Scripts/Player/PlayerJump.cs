@@ -9,9 +9,9 @@ public class PlayerJump : MonoBehaviour
 {
     [Header("Player Jump Variables")]
     public float JumpVelocity;
-    public bool IsGrounded = false;
+    public bool IsGrounded;
     public float defaultGravity;
-    public GameObject rayTarget;
+    //public GameObject rayTarget;
     //public float gravityScaleRate;
 
     [Header("Other")]
@@ -19,22 +19,30 @@ public class PlayerJump : MonoBehaviour
     private double gravity;
     private float playerMass;
     public bool SpaceDown;
+    public float maxVelocity;
+    public Animator anim;
 
     void Start()
     {
        gravity = this.PlayerRig.gravityScale;
        playerMass = this.PlayerRig.mass;
+        IsGrounded = false;
     }
 
     void FixedUpdate()
     {
         Jump();
-        GroundCheck();
+       
         
     }
 
     void Update()
     {
+        IsGrounded = Physics2D.BoxCast(transform.position, new Vector2(2.0f, 1.0f), 0.0f, Vector2.down, 1.0f, 1 << LayerMask.NameToLayer("Grounded"));
+
+   
+        this.PlayerRig.velocity = new Vector2(PlayerRig.velocity.x,Mathf.Clamp(this.PlayerRig.velocity.y, -maxVelocity, maxVelocity));
+
         KeyStatesCheck();
         AlterGravity();
          
@@ -54,34 +62,15 @@ public class PlayerJump : MonoBehaviour
         
     }
 
-    public void GroundCheck()
-    {
-
-
-        //Debug.DrawRay(rayTarget.transform.position,Vector3.down*0.1f, Color.red);
-        RaycastHit hitRay;
-        //Debug.DrawRay(rayTarget.transform.position, hitRay.point, Color.red, 2f);
-
-        if (Physics.Raycast(rayTarget.transform.position, -Vector3.up, out hitRay))
-        {
-            if (hitRay.collider)
-            {
-                Debug.Log("Collided");
-                Debug.DrawRay(rayTarget.transform.position, -Vector3.up * hitRay.distance, Color.red, 2f);
-            }
-           
-           
-        }
-
-    }
-
+   
     public void Jump()
     {
-        if (SpaceDown&&IsGrounded)
+        if ((Input.GetAxis("Jump"))>0&&(IsGrounded))
         {
+            anim.SetInteger("AnimationState", 2);
             PlayerRig.AddForce(Vector3.up * JumpVelocity, ForceMode2D.Impulse);
             IsGrounded = false;
-            
+
         }
 
     }
@@ -98,23 +87,5 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-           IsGrounded = true;
-           gravity = defaultGravity;
-        }
-       
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            IsGrounded = false;
-            //gravity = defaultGravity;
-        }
-
-    }
+ 
 }
