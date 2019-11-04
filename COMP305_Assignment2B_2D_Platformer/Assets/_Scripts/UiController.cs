@@ -15,13 +15,17 @@ namespace Util
         private int _lives;
         public Text gameOverLabel;
         public Text gameTitle;
+        public Text winTitle;
         public GameObject restartButton;
         public GameObject startButton;
+        public GameObject retryButton;
+        public GameObject quitButton;
         public Image cherryImage;
         public Image livesImage;
 
         public AudioSource gameOverSfx;
         public AudioSource clickSfx;
+        public AudioSource winSfx;
 
         public int CherryScore
         {
@@ -70,7 +74,11 @@ namespace Util
                     cherryImage.enabled = false;
                     livesImage.enabled = false;
                     startButton.SetActive(false);
+                    retryButton.SetActive(false);
+                    quitButton.SetActive(false);
+                    winTitle.enabled = false;
                     gameOverSfx.Play();
+
 
                     break;
 
@@ -81,6 +89,9 @@ namespace Util
                     livesImage.enabled = true;
                     restartButton.SetActive(false);
                     startButton.SetActive(false);
+                    retryButton.SetActive(false);
+                    quitButton.SetActive(false);
+                    winTitle.enabled = false;
 
                     break;
 
@@ -91,7 +102,26 @@ namespace Util
                     livesImage.enabled = false;
                     restartButton.SetActive(false);
                     startButton.SetActive(true);
+                    retryButton.SetActive(false);
+                    quitButton.SetActive(false);
+                    winTitle.enabled = false;
                     break;
+
+                case "Win":
+
+                    winSfx.Play();
+                    gameOverLabel.enabled = false;
+                    restartButton.SetActive(false);
+                    gameTitle.enabled = false;
+                    cherryImage.enabled = false;
+                    livesImage.enabled = false;
+                    startButton.SetActive(false);
+                    retryButton.SetActive(true);
+                    quitButton.SetActive(true);
+                    winTitle.enabled = true;
+                   
+                    break;
+
 
             }
         }
@@ -108,6 +138,20 @@ namespace Util
             SceneManager.LoadScene("Main");
             clickSfx.Play();
 
+        }
+
+        public void OnRetryButtonClick()
+        {
+            SceneManager.LoadScene("Main");
+            clickSfx.Play();
+        }
+
+        public void OnQuitButtonClick()
+        {
+            //SceneManager.LoadScene("Win");
+
+            clickSfx.Play();
+            Application.Quit();
         }
 
 

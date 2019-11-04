@@ -45,6 +45,8 @@ namespace Util
 
             }
 
+            Physics2D.IgnoreLayerCollision(10, 10);
+
             Movement();
         }
 

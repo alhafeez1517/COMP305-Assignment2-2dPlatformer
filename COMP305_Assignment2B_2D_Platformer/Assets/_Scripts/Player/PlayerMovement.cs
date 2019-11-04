@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Util;
 
 public class PlayerMovement : MonoBehaviour
@@ -158,6 +159,11 @@ public class PlayerMovement : MonoBehaviour
                 uiController.Lives += 1;
                 Destroy(collision.gameObject);
                 break;
+
+            case "Victory":
+                SceneManager.LoadScene("Win");
+                break;
+                
         }
        
     }
@@ -187,6 +193,15 @@ public class PlayerMovement : MonoBehaviour
                     anim.SetTrigger("IsHurt");
 
                     uiController.Lives -= 1;
+                }
+                    break;
+
+            case "Spikes":
+                if (uiController.Lives != 0)
+                {
+                    hurtSfx.Play();
+                    anim.SetTrigger("IsHurt");
+                    uiController.Lives -=10;
                 }
                     break;
         }

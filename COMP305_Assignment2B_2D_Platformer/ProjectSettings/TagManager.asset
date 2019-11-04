@@ -9,6 +9,8 @@ TagManager:
   - Collectible
   - Enemy
   - Life
+  - Spikes
+  - Victory
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - Grounded
   - Player
-  - 
+  - Enemies
   - 
   - 
   - 
