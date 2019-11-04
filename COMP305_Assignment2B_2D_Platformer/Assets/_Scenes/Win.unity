@@ -2487,6 +2487,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 54611599, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_Text
+      value: FOXY'S STROLL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a,
+        type: 3}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6766228523827910098, guid: 89bfd182e41c19247846a6733b1010e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2597,6 +2622,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1950767916, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a,
+        type: 3}
+    - target: {fileID: 1950767916, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950767916, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950767916, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699076, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950767915, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 54611601, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2605,10 +2655,39 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1472359671}
+    - target: {fileID: 1459803132, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459803134, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b,
+        type: 2}
+    - target: {fileID: 1459803134, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459803134, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459803134, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406052366, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1406052368, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1472359671}
+    - target: {fileID: 532496445, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 532496447, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -2515,6 +2515,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_Text
+      value: FOXY'S STROLL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b,
+        type: 2}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699077, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6766228523827910098, guid: 89bfd182e41c19247846a6733b1010e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2625,6 +2646,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1740699079, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740699079, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 769275978, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -115
+      objectReference: {fileID: 0}
+    - target: {fileID: 769275978, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7
+      objectReference: {fileID: 0}
     - target: {fileID: 1740699076, guid: 89bfd182e41c19247846a6733b1010e7, type: 3}
       propertyPath: m_IsActive
       value: 1
